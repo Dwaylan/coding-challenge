@@ -27,8 +27,14 @@ class SearchBar extends Component {
         cancelToken: this.cancel.token,
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
+
+        this.setState({
+          results: res.data,
+          loading: false,
+        });
       })
+
       .catch((error) => {
         if (axios.isCancel(error) || error) {
           this.setState({
@@ -44,6 +50,20 @@ class SearchBar extends Component {
     this.setState({ query: query, loading: true, message: "" }, () => {
       this.fetchSearchResults(query);
     });
+  };
+
+  renderSearchResults = () => {
+    const { results } = this.state.data;
+
+    if (Object.keys(results).length && results.length) {
+      return (
+        <div className="results-container">
+          {results.map((business) => {
+            return <a key={business.id} href={business.url}></a>;
+          })}
+        </div>
+      );
+    }
   };
   render() {
     const { query } = this.state;
