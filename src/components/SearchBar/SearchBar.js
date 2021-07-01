@@ -53,13 +53,20 @@ class SearchBar extends Component {
   };
 
   renderSearchResults = () => {
-    const { results } = this.state.data;
+    const { results } = this.state;
 
     if (Object.keys(results).length && results.length) {
       return (
         <div className="results-container">
           {results.map((business) => {
-            return <a key={business.id} href={business.url}></a>;
+            return (
+              <a key={business.id} href={business.url} className="result-item">
+                <h6 className="company-id">{business.company_id}</h6>
+                <div className="image-wrapper">
+                  <h4> {business.company_name}</h4>
+                </div>
+              </a>
+            );
           })}
         </div>
       );
@@ -81,6 +88,7 @@ class SearchBar extends Component {
             onChange={this.handleOnInputChange}
           />
         </label>
+        {this.renderSearchResults()}
       </div>
     );
   }
