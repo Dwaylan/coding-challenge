@@ -82,7 +82,7 @@ class SearchBar extends Component {
           <input
             type="text"
             name="query"
-            placeholder="insert database ID"
+            placeholder="insert database ID (1-121)"
             value={query}
             id="search-input"
             onChange={this.handleOnInputChange}
