@@ -15,9 +15,9 @@ class SearchBar extends Component {
   }
 
   fetchSearchResults = (updatedPageNo, query) => {
-    // const pageNumber = updatedPageNo ? `&page=4${updatedPageNo}` : "";
-    const searchUrl = `https://challenge-rest-api.vercel.app/business${query}`;
-
+    console.log(this.state.query);
+    const searchUrl = `https://challenge-rest-api.vercel.app/business/${this.state.query}`;
+    console.log(searchUrl);
     if (this.cancel) {
       this.cancel.cancel();
     }
@@ -27,15 +27,14 @@ class SearchBar extends Component {
         cancelToken: this.cancel.token,
       })
       .then((res) => {
-        // const resultNotFoundMsg = 
         console.log(res.data);
       })
-      .catch(error =>{
-        if(axios.isCancel(error) || error){
+      .catch((error) => {
+        if (axios.isCancel(error) || error) {
           this.setState({
             loading: false,
-            message: 'Failed to fetch data'
-          })
+            message: "Failed to fetch data",
+          });
         }
       });
   };
@@ -56,7 +55,7 @@ class SearchBar extends Component {
           <input
             type="text"
             name="query"
-            placeholder="type here"
+            placeholder="insert database ID"
             value={query}
             id="search-input"
             onChange={this.handleOnInputChange}
