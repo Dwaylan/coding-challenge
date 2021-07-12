@@ -60,11 +60,14 @@ class SearchBar extends Component {
         <div className="results-container">
           {results.map((business) => {
             return (
-              <div>
-                <h4>{business.company_name}</h4>
+              <div className="Business_card">
+                <h4 className="Business_title">{business.company_name}</h4>
+                <h5>Type: {business.company_category}</h5>
                 <h5>Country: {business.country}</h5>
-                <h5>State: {business.state}</h5>
-                <h5>City: {business.city}</h5>
+                <h5>
+                  City: {business.city}, {business.state} {""}
+                  {business.zip_code} {""} {""}
+                </h5>
                 <h5> Year Founded: {business.year_founded}</h5>
                 <a
                   key={business.id}

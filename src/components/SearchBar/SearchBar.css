@@ -24,3 +24,14 @@
   box-sizing: border-box;
   outline: none;
 }
+
+.Business_title {
+  color: peru;
+}
+
+.Business_card {
+  border: solid #444 1px;
+  border-radius: 4%;
+  box-shadow: 5px 5px #444;
+  align-items: center;
+}
