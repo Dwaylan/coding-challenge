@@ -95,6 +95,7 @@ class SearchBar extends Component {
         <h2 className="heading">Business table challenge</h2>
         <label className="search-label" htmlFor="search-input">
           <input
+            className="text_input"
             type="text"
             name="query"
             placeholder="insert database ID (1-121)"
